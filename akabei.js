@@ -14,9 +14,18 @@ var hostname = '0.0.0.0',
  }).listen(port, hostname);
 */
 
-var grid = new PhantomSeleniumGrid({
+var phantomSeleniumGridConfig = {
+    'initialCount': 10
+};
+
+var seleniumGridConfig = {
     'seleniumServerJar': seleniumServerJar
-});
+};
+
+var grid = new PhantomSeleniumGrid(
+    phantomSeleniumGridConfig,
+    seleniumGridConfig
+);
 
 grid.start();
 
