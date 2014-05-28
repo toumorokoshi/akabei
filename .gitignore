@@ -1,0 +1,11 @@
+# dev editing files
+*~
+\#*
+
+# generated files
+eggs/
+bin/
+parts/
+extbin/
+node_modules/
+.installed.cfg

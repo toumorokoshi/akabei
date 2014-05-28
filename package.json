@@ -1,0 +1,25 @@
+{
+    "author": "Yusuke Tsutsumi <yusuket@zillow.com>",
+    "name": "akabei",
+    "description": "phantomjs cluster manager",
+    "private": true,
+    "version": "0.1.0",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/zillow/akabei.git"
+    },
+    "bin": {
+        "akabei": "./akabei.js"
+    },
+    "main": "./akabei.js",
+    "engines": {
+        "node": ">=0.10.26"
+    },
+    "dependencies": {
+        "phantomjs": "~1.9.7",
+        "winston": "~0.7.3"
+    },
+    "devDependencies": {
+        "mocha": "~1.13.0"
+    }
+}
