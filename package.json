@@ -18,7 +18,8 @@
     "dependencies": {
         "phantomjs": "~1.9.7",
         "winston": "~0.7.3",
-        "express": "3.x"
+        "express": "3.x",
+        "httpsync": "0.0.8"
     },
     "devDependencies": {
         "mocha": "~1.13.0"

@@ -24,7 +24,12 @@ var grid = new PhantomSeleniumGrid(
 );
 
 grid.start();
-
+// not stopping the grid will cause orphaned phantom processes
+process.on('uncaughtException', function(err) {
+    grid.stop();
+    console.log(err.stack);
+    process.exit(1);
+});
 
 var app = akabeiServer(akabeiServerConfig, grid);
 app.listen(port, function () {
