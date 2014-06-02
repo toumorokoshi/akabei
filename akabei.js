@@ -1,16 +1,19 @@
 #!/usr/bin/env node
 
 var doc = "\
-akabei, a phantomjs cluster manager \
-Usage:                              \
-  akabei [<config_file>]            \
+akabei, a phantomjs cluster manager \n\
+Usage:                              \n\
+  akabei [<config_file>]            \n\
+  akabei -h | --help                \n\
 ";
 
 docopt = require('docopt');
 
 var args = docopt.docopt(doc),
-    config_file = args['<config_file>'] || './config.js',
-    config = require(config_file);
+    config_file = args['<config_file>'] || './config.js';
+
+console.log('loading config file from ' + config_file + '...');
+var config = require(config_file);
 
 var akabeiServer = require('./lib/akabei_server.js');
 var PhantomSeleniumGrid = require('./lib/phantom_selenium_grid.js');

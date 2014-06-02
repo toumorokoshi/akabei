@@ -17,7 +17,7 @@ module.exports = {
     // instances
     // look at ./lib/phantom_cluster.js for all options
     'phantomClusterConfig': {
-        'initialCount': 15,
+        'initialCount': 10,
         'maxInstances': 100,
         'desiredLoad': 0.7,
         'minPort': 31000,
