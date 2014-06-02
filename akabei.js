@@ -1,27 +1,24 @@
 #!/usr/bin/env node
 
+var doc = "\
+akabei, a phantomjs cluster manager \
+Usage:                              \
+  akabei [<config_file>]            \
+";
+
+docopt = require('docopt');
+
+var args = docopt.docopt(doc),
+    config_file = args['<config_file>'] || './config.js',
+    config = require(config_file);
+
 var akabeiServer = require('./lib/akabei_server.js');
 var PhantomSeleniumGrid = require('./lib/phantom_selenium_grid.js');
 
-var hostname = '0.0.0.0',
-    port = 8000,
-    seleniumServerJar = './bin/selenium-server-standalone-2.42.0.jar';
+var hostname = config.akabeiServerConfig.hostname || '0.0.0.0',
+    port = config.akabeiServerConfig.port || 8000;
 
-var phantomSeleniumGridConfig = {
-    'initialCount': 10
-};
-
-var seleniumGridConfig = {
-    'seleniumServerJar': seleniumServerJar
-};
-
-var akabeiServerConfig = {
-};
-
-var grid = new PhantomSeleniumGrid(
-    phantomSeleniumGridConfig,
-    seleniumGridConfig
-);
+var grid = new PhantomSeleniumGrid(config);
 
 grid.start();
 // not stopping the grid will cause orphaned phantom processes
@@ -31,7 +28,7 @@ process.on('uncaughtException', function(err) {
     process.exit(1);
 });
 
-var app = akabeiServer(akabeiServerConfig, grid);
+var app = akabeiServer(config.akabeiServerConfig, grid);
 app.listen(port, function () {
     console.log('Started server at ' + hostname + ':' + port);
 });
