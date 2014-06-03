@@ -16,7 +16,6 @@
         "node": ">=0.10.26"
     },
     "dependencies": {
-        "phantomjs": "~1.9.7",
         "winston": "~0.7.3",
         "express": "3.x",
         "httpsync": "0.0.8",
