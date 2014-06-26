@@ -16,6 +16,7 @@
         "node": ">=0.10.26"
     },
     "dependencies": {
+
         "winston": "~0.7.3",
         "express": "3.x",
         "httpsync": "0.0.8",
