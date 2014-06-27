@@ -26,7 +26,7 @@ module.exports = {
         // instances as it's created
         'defaultPhantomConfig': {
             // the path to the phantomjs executable to use
-            'executablePath': './node_modules/.bin/phantomjs'
+            'executablePath': './bin/phantomjs'
         }
     }
 };

@@ -23,6 +23,8 @@ var hostname = config.akabeiServerConfig.hostname || '0.0.0.0',
 
 var grid = new PhantomSeleniumGrid(config);
 
+console.log('starting akabei with pid ' + process.pid);
+
 grid.start();
 // not stopping the grid will cause orphaned phantom processes
 process.on('uncaughtException', function(err) {
@@ -30,6 +32,15 @@ process.on('uncaughtException', function(err) {
     console.log(err.stack);
     process.exit(1);
 });
+
+['SIGINT', 'SIGTERM'].forEach(function (signal) {
+    process.on(signal, function() {
+        console.log("Caught " + signal + ", exiting...");
+        grid.stop();
+        process.exit(0);
+    });
+});
+
 
 var app = akabeiServer(config.akabeiServerConfig, grid);
 app.listen(port, function () {
