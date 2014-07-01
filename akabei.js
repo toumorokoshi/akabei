@@ -1,16 +1,20 @@
 #!/usr/bin/env node
 
 var doc = "\
-akabei, a phantomjs cluster manager \n\
-Usage:                              \n\
-  akabei [<config_file>]            \n\
-  akabei -h | --help                \n\
+akabei, a phantomjs cluster manager      \n\
+Usage:                                   \n\
+  akabei [<config_file> -v]              \n\
+  akabei -h | --help                     \n\
 ";
 
-docopt = require('docopt');
+var docopt = require('docopt');
+var logger = require('./lib/logger');
 
 var args = docopt.docopt(doc),
-    config_file = args['<config_file>'] || './config.js';
+    config_file = args['<config_file>'] || './config.js',
+    loggingLevel = args['-v'] ? 'debug' : 'info';
+
+logger.transports.console.level = 'debug';
 
 console.log('loading config file from ' + config_file + '...');
 var config = require(config_file);
