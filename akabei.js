@@ -21,7 +21,6 @@ var args = docopt.docopt(doc),
 
 logger.transports.console.level = loggingLevel;
 
-console.log(args);
 if (args['--log']) {
     logger.add(winston.transports.File, {
         filename: args['<log_file>'],
